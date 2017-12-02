@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+<title>map</title>
+<meta charset=utf-8>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta name="viewport" content="width=device-width">
+</head>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script type="text/javascript">
+    // When the window has finished loading create our google map below
+    google.maps.event.addDomListener(window, 'load', init);
+
+    function init() {
+        // Basic options for a simple Google Map
+        // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+        var mapOptions = {
+            // How zoomed in you want the map to start at (always required)
+            zoom: 3,
+
+
+            // The latitude and longitude to center the map (always required)
+            center: new google.maps.LatLng(17.938610, 19.094011), //CHAD
+
+            disableDefaultUI: true,
+            // How you would like to style the map.
+            // This is where you would paste any style found on Snazzy Maps.
+            styles: [
+                {
+                    "featureType": "all",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        },
+                        {
+                            "color": "#ff0000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "saturation": 36
+                        },
+                        {
+                            "color": "#544d4d"
+                        },
+                        {
+                            "lightness": 40
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        },
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 16
+                        }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 20
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 17
+                        },
+                        {
+                            "weight": 1.2
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.country",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#3c0101"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.province",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.province",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 20
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#1d0303"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 21
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#ff0000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#7a5b5b"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#0a0000"
+                        },
+                        {
+                            "lightness": 17
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 29
+                        },
+                        {
+                            "weight": 0.2
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 18
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 16
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 19
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#3a0202"
+                        },
+                        {
+                            "lightness": 17
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#850202"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // We are using a div with id="map" seen below in the <body>
+        var mapElement = document.getElementById('map');
+
+
+        // Create the Google Map using our element and options defined above
+        var map = new google.maps.Map(mapElement, mapOptions);
+
+        // Markers for Each city
+
+        var englandCapital = new google.maps.LatLng(51.520441, -0.129070); //  UK - LONDON
+        var englandNews = '<h1>TOP NEWS IN UK</h1>' + '<iframe width="500" height="300" style="border:none;" overflow="none"  src="http://output81.rssinclude.com/output?type=iframe&amp;id=1124226&amp;hash=a4b3c75e56a6158405c09a9146c3c37e"></iframe>'
+
+        var kenyaCapital = new google.maps.LatLng(-1.293819, 36.819929); // KENYA - NAIROBI
+        var kenyaNews = '<h1>TOP NEWS IN KENYA</h1>' + '<iframe width="500" height="300" style="border:none;" src="http://output58.rssinclude.com/output?type=iframe&amp;id=1124243&amp;hash=43f3e83f26342dcca66a68b527d67af8"></iframe>'
+
+        var newYorkCapital = new google.maps.LatLng(40.6700, -73.9400); // EAST US - NEWYORK
+        var newYorkNews = '<h1>TOP NEWS IN THE U.S.</h1>'+ '<iframe width="500" height="300" style="border:none;" src="http://output94.rssinclude.com/output?type=iframe&amp;id=1124964&amp;hash=1bdde0038524914d834cce4db6589069"></iframe>'
+
+        var israelCapital = new google.maps.LatLng(31.059269, 34.790195); // ISRAEL - TEL AVIV
+        var spainNews = '<h1>TOP NEWS IN ISRAEL</h1>' + '<iframe width="500" height="300" style="border:none;" src="http://output39.rssinclude.com/output?type=iframe&amp;id=1124962&amp;hash=30f1a4391d0e4e1637be2ee65a4e8420"></iframe>>'
+
+        var nigeriaCapital = new google.maps.LatLng(9.703890, 7.454838); // NIGERIA - CENTER
+        var nigeriaNews = '<h1>TOP NEWS IN NIGERIA</h1>' + '<iframe width="500" height="300" style="border:none;" src="http://output42.rssinclude.com/output?type=iframe&amp;id=1124246&amp;hash=320718c6b1f948cf291b513e87291713"></iframe>'
+
+        var southAfricaCapital = new google.maps.LatLng(-30.890935, 23.714792); // SOUTH AFRICA - BOTSWANA
+        var southAfricaNews = '<h1>TOP NEWS IN SOUTH AFRICA</h1>' + '<iframe width="500" height="300" style="border:none;" src="http://output11.rssinclude.com/output?type=iframe&amp;id=1124243&amp;hash=43f3e83f26342dcca66a68b527d67af8"></iframe>'
+
+        var ethiopiaCapital = new google.maps.LatLng(8.984874, 38.753080); // ETHIIOPIA - ADDIS ABABA
+        var ethiopiaNews = '<h1>TOP NEWS IN ETHIOPIA</h1>' + '<iframe width="500" height="300" style="border:none;"  src="http://output95.rssinclude.com/output?type=iframe&amp;id=1124965&amp;hash=7f3d52a04fc25623ad414c3765d646b9"></iframe>'
+
+        var australiaCapital = new google.maps.LatLng(-33.824088, 151.144992); // SYDNEY - AUSTRALIA
+        var australiaNews = '<h1>TOP NEWS IN AUSTRALIA</h1>' + '<iframe width="500" height="300" style="border:none;" src="http://output85.rssinclude.com/output?type=iframe&amp;id=1125472&amp;hash=3a1e45ee374007fc5505b980de33e74e"></iframe>'
+
+        var canadaCapital = new google.maps.LatLng(45.419720, -75.702777); // OTTAWA - CANADA
+        var canadaNews = '<h1>TOP VIDEO</h1>' + '<iframe width="500" height="315" src="https://www.youtube.com/embed/V3WBAk9YLe0" frameborder="0" allowfullscreen></iframe>'
+        var canadaNews = '<h1>TOP VIDEO</h1> <SECTION>foo bar baz <h1>fosidf</h1> <p>ieworhteowr</p><p>ewioyhroeqny</p></section>'
+
+        var ghanaCapital = new google.maps.LatLng(5.604250, -0.200149); // ACCRA - GHANA
+        var ghanaNews = '<h1>TOP VIDEO IN</h1>' + '<video> autoplay <source> <src"https://vimeo.com/200338876" </source> </video>'
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // LONDON
+        var myinfowindow = new google.maps.InfoWindow({
+            content: englandNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : englandCapital,
+            title: 'London',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // NAIROBI
+        var myinfowindow = new google.maps.InfoWindow({
+            content: kenyaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : kenyaCapital,
+            title: 'Kenya',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // NEWYORK
+        var myinfowindow = new google.maps.InfoWindow({
+            content: newYorkNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : newYorkCapital,
+            title: 'United States of America',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // ISRAEL
+        var myinfowindow = new google.maps.InfoWindow({
+            content: spainNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : israelCapital,
+            title: 'Israel',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+        // NIGERIA
+        var myinfowindow = new google.maps.InfoWindow({
+            content: nigeriaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : nigeriaCapital,
+            title: 'Nigeria',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // SOUTH AFRICA
+        var myinfowindow = new google.maps.InfoWindow({
+            content: southAfricaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : southAfricaCapital,
+            title: 'SouthAfrica',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // ETHIOPIA
+        var myinfowindow = new google.maps.InfoWindow({
+            content:  ethiopiaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : ethiopiaCapital,
+            title: 'Ethiopia',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // AUSTRALIA
+        var myinfowindow = new google.maps.InfoWindow({
+            content:  australiaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : australiaCapital,
+            title: 'Australia',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // CANADA
+        var myinfowindow = new google.maps.InfoWindow({
+            content:  canadaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : canadaCapital,
+            title: 'Canada',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        // GHANA
+        var myinfowindow = new google.maps.InfoWindow({
+            content:  ghanaNews
+        });
+
+        var marker = new google.maps.Marker({
+            position : ghanaCapital,
+            title: 'Ghana',
+            icon: "star.svg",
+            map : map,
+            infowindow: myinfowindow
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+                this.infowindow.open(map, this);
+        });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+    }
+
+ </script>
+
+  <body>
+
+<div class="clockFace">
+
+
+
+  <script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+        h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+  </script>
+
+  <body onload="startTime()">
+
+
+<section class="clock">
+
+  <p>
+    <div id="txt"></div>
+
+  </p>
+
+
+</section>
+</div>
+
+
+    <!-- The element that will contain our Google Map. This is used in both the Javascript and CSS above. -->
+    <div id="map"></div>
+
+</body>
+<script src="//rss.bloople.net/?url=https%3A%2F%2Fnews.google.com%2Fnews%2Frss%2Fheadlines%2Fsection%2Ftopic%2FNATION.en_uk%2FU.K.%3Fned%3Duk%26hl%3Den-GB&showtitle=false&type=js"></script>
